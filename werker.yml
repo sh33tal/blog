@@ -1,0 +1,14 @@
+box: wercker/default
+build:
+    steps:
+        - arjen/hugo-build:
+        version: 0.14
+        theme: alexandre-normand
+        config: config.toml
+deploy:
+    steps:
+        - lukevivier/gh-pages@0.2.1:
+        token: $GIT_TOKEN
+        domain: sh33tal.github.io
+        basedir: public
+        repo: sh33tal/sh33tal.github.io
