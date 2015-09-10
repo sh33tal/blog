@@ -1,0 +1,10 @@
+contentdir = "content"
+layoutdir = "layouts"
+publishdir = "public"
+builddrafts = false
+baseurl = "http://sh33tal.github.io"
+canonifyurls = true
+[indexes] 
+       category = "categories"
+       tag = "tags"
+
