@@ -220,6 +220,8 @@ When looking at duplication in our code, one of the things that we could conside
 
 Repetition in Process
 
+
+
 The last thing that we want to discuss here in our Don't Repeat Yourself Course, is the types of repetition that occur in your process. If you look at your testing, performing testing by hand is tedious and wasteful. If you look at your builds, performing builds by hand is tedious and wasteful. If you look at how your deployment process works, you'll find that performing deployments by hand is tedious and wasteful. In fact, you might see some repetition in this particular slide where we could just say that performing whatever by hand is tedious and wasteful. So if we have things that can easily be automated, we should do so. And in our process, the things that can be automated include testing, building, and deploying our application. Let's look at a quick demo that shows how we can automate these processes.
 
 Demo: Automation with MSBuild
