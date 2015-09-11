@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>    
+    <title>Hey, It's Alex - Love Letter to Github</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+    
+    <link href="http://localhost:1313/bootstrap/css/bootstrap.2.2.2.min.css" rel="stylesheet">
+    <link href="http://localhost:1313/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">     
+    <link href="http://localhost:1313/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="http://localhost:1313/css/ss-social-circle/ss-social-circle.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href='http://fonts.googleapis.com/css?family=Lato:300|Source+Code+Pro:400,700|Quattrocento+Sans:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+    <link href="http://localhost:1313/css/fonts.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link rel="shortcut icon" href="http://localhost:1313/images/alex-normand.ico"> 
+    <link rel="apple-touch-icon" href="http://localhost:1313/images/alex-normand.png">
+    <link rel="canonical" href="http://localhost:1313/love-letter-to-github/">
+
+    
+    <link href="http://localhost:1313/rss.xml" type="application/atom+xml" rel="alternate" title="">    
+
+  </head>
+  <body>    
+    <div class="brand">      
+      <div class="container">    
+          <a href="http://heyitsalex.net"><h1>Hey, it's <b>Alex</b>!</h1></a>              
+          <h2 class="subtitle">Creating through Software, but not exclusively.</h2>
+          <ul class="social-links">
+            <li><a href="https://500px.com/alexnormand" class="ss-icon ss-social-circle">500px</a></li>
+            <li><a href="http://flickr.com/photos/alexnormand" class="ss-icon ss-social-circle">flickr</a></li>                 
+            <li>&nbsp;</li>
+            <li><a href="https://github.com/alexandre-normand" class="ss-icon ss-social-circle">octocat</a></li>            
+            <li><a href="https://twitter.com/alex_normand" class="ss-icon ss-social-circle">twitter</a></li>                         
+            <li>&nbsp;</li>            
+            <li><a href="http://localhost:1313/index.xml" class="ss-icon ss-social-circle">rss</a></li>
+          </ul>
+      </div>      
+    </div>
+
+<div class="container">
+  <div class="content">
+
+    <div class="row-fluid post-full">
+      <div class="container content">  
+       
+      <h1>Love Letter to Github <span class="date">[December 17 2012]</span></h1>
+
+       <div class="post content">
+        <p>
+<figure class="medium">
+    
+        <img src="http://alexandrenormand.users.sonic.net/heyitsalex.net/wp-content/uploads/2012/12/Octocalex-2012-12-16-07.49.31-168-PM1.png"  />
+    
+    
+    <figcaption>
+        I&#39;m really sorry about this. I wanted an image and I thought drawing myself octocat-style would be cool. I guess it could have been if I had done a better job. For the record, I blame the tools. No SketchBook Ink for me next time.
+        
+    </figcaption>
+    
+</figure>
+</p>
+
+<p>I have one thing I want to say today: I love <a href="https://github.com/">Github</a>.</p>
+
+<p>Since this would just barely be worthy of a tiny tweet (and not even a _good_ one), I&rsquo;m going to stretch this as far as I can to get to a blog post length. Just because I feel like blogging today. Yes, that&rsquo;s just how it&rsquo;s going to be.</p>
+
+<p>The past week was really great. Don&rsquo;t you care to know why? Well, fine, I&rsquo;m telling anyway.</p>
+
+<p>It starts with me just trying to get some data on the distribution of the data across regions in hbase. I thought it was something we should be looking at.</p>
+
+<p>Enters <a href="https://github.com/sentric/hannibal">Hannibal</a>.</p>
+
+<p>In a few minutes, I had cloned it, built it and had it running against one of our clusters. The visuals are really good and it definitely increases our ability to quickly see where we&rsquo;re at compared to a text output (which can also be done pretty easily with an hbase shell script).</p>
+
+<p>With this running instance on our data quickly came the realization that we&rsquo;d use this for real. And, like, <em>right now</em>.</p>
+
+<p>On closer look, I noticed issues with getting compaction logs. Also, I started thinking of some things we might tweak to make it easier to have this deployed and running internally.</p>
+
+<p>I&rsquo;m not going to go into the details of the changes involved. The <strong>process</strong> is really the topic I had in mind when sitting down to write this. Or rather the lack thereof really.</p>
+
+<p>Did you notice? I just lied straight to your face and I knew you wouldn&rsquo;t budge. Actually, there _is_ a process but Github makes it all so easy and fun that it doesn&rsquo;t feel like the drag we so often associate with processes.</p>
+
+<p>Here&rsquo;s how this lays out: You read about this thing or google your way to it. You need this thing and someone already wrote it. It starts here and then&hellip;</p>
+
+<ol>
+<li><p>Clone, build, run and use the thing.</p></li>
+
+<li><p>There&rsquo;s something missing or that could use some improvement.</p></li>
+
+<li><p>You feel the urge to fix it.</p></li>
+</ol>
+
+<p>That&rsquo;s the critical part right there. It&rsquo;s often where things <em>get complicated</em>. You might need to file a ticket first with steps to reproduce. You might need to sell people of that feature you think _should definitely_ be in the scope of the project. You know, it&rsquo;s complicated™. But Github helps. Let&rsquo;s get on with how this goes with it&hellip;</p>
+
+<ol>
+<li><p>You fork it. A one click step.</p></li>
+
+<li><p>You do the work. And it&rsquo;s the most fun part. You&rsquo;re excited because this is something that bugged <em>you</em>. It&rsquo;s something _you_ care about.</p></li>
+
+<li><p>Done with the changes? Now it&rsquo;s pull requesta extravaganza! This is when you get to show off the interesting work you&rsquo;ve cared so much about. Also, because it&rsquo;s cool to work with people excited about your project, interesting discussions follow. Meeting new folks. You know, <em>talking_ (or, more accurately, _typing</em>).</p></li>
+
+<li><p>I&rsquo;m just describing one scenario here but let&rsquo;s say everything is right and your changes were merged into the upstream repo. Doesn&rsquo;t this feel <em>great</em>? It&rsquo;s almost silly but I just feel like a little boy and I want to show mommy how proud I am of the thing I just did. Even for a one line change. I&rsquo;d like to show the whole world about this thing I just did. Please refrain though. People will run away screaming if you do this too often. And maybe even the first time you do it. So, please, don&rsquo;t!</p></li>
+
+<li><p>You just feel like smiling.</p></li>
+</ol>
+
+<p>To be fair, you can get the same great rewarding feeling from contributing to any open source project even if that&rsquo;s not hosted on <a href="https://github.com/">Github</a>. But the entry barrier is just a little bit higher. It takes more time. Some of that precious and limited energy that you have is spent on the _other_ stuff that, well, isn&rsquo;t as much fun.</p>
+
+<p>Anything to make the process so easy it just seems to <em>not</em> exist is an amazing feat. <a href="https://github.com/">Github</a> really enables tons of changes (okay, I just made that up but I really think it&rsquo;s a good uneducated guess) by just making a path available from discovering a personal need to getting it done. Github is empowering people to fix it <em>immediately</em>. And we all know how momentum is important.</p>
+
+<p>I think I won&rsquo;t shock anyone if I say we wouldn&rsquo;t want to go back to a world without <a href="https://github.com/">Github</a>. More than <a href="http://www.jetbrains.com/">JetBrains</a>, Github really brings the _develop with pleasure_ motto to life.</p>
+
+<p>Dear Github, I love you. Never leave me.</p>
+
+       </div>             
+    
+<div class="row">
+      <div class="small-offset-1 small-10 columns">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">                        
+        var disqus_shortname = 'hey-its-alex'; 
+        var disqus_developer = 1;
+        </script>
+
+        <script type="text/javascript" src="http://disqus.com/forums/antzucaro/embed.js"></script>
+        <noscript><a href="http://antzucaro.disqus.com/?url=ref">View the discussion thread.</a></noscript><a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+      </div>
+    </div>
+    
+
+          <footer>          
+          <p><span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">All content on this blog is the creation of <a xmlns:cc="http://creativecommons.org/ns#" href="http://localhost:1313/" property="cc:attributionName" rel="cc:attributionURL">Alexandre Normand</a> unless stated otherwise</span>. I'm licensing it under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/3.0/deed.en_US">Creative Commons Attribution-NonCommercial 3.0 Unported License</a>. Have fun.
+          </p>
+        </footer>
+      </div>
+    </div>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-32186861-1', 'heyitsalex.net');
+  ga('send', 'pageview');
+
+</script>
+
+</body>
+</html>
