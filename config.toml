@@ -7,4 +7,7 @@ canonifyurls = true
 [indexes] 
        category = "categories"
        tag = "tags"
-
+[params]
+title = "My blogs"
+linkedinLink = "https://uk.linkedin.com/pub/hetal-patel/0/a94/54"
+facebook = "http://facebook.com" 

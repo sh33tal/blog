@@ -1,16 +1,16 @@
 ---
-author: alexandre.normand
+author: Hetal Patel
 comments: true
-date: 2012-06-12 05:20:03+00:00
+date: 2015-06-12 05:20:03+00:00
 layout: post
-slug: hey-its-a-start
-title: Hey, it's a Start
+slug: My Tips
+title: My C# Tips
 wordpress_id: 22
 categories:
 - nothing
 ---
 
-The null-coalescing operator
+### The Null Coalescing operator
 
 The null-coalescing operator can simplify our If statements when we need to check for the existence of a null value and provide some other default. If we don't use the null-coalescing operator, we typically end up with If statements that look something like this. 
 
@@ -33,9 +33,9 @@ Here, we set a name and then we want to get a result. What we want is if the nam
 
 
 
-Testing char Unicode validity
+### Testing char Unicode validity
 
-sometimes it's useful to check whether a character is valid or not. To do this, we can use the static GetUnicodeCharacter method of the char struct. To use this method, we pass in a char and we get back a category. To test whether the character is valid, we check this Category is not equal to the OtherNotAssigned category.
+It's useful to check whether a character is valid or not. To do this, we can use the static GetUnicodeCharacter method of the char struct. To use this method, we pass in a char and we get back a category. To test whether the character is valid, we check this Category is not equal to the OtherNotAssigned category.
 
             var validCharacter = 'q';
 
@@ -55,7 +55,7 @@ If we cast from an integer and convert this to a char, we could end up with some
             
   The category that we've got is the OtherNotAssigned category and isValidUnicode is now false. So the GetUnicodeCategory method is a useful one whenever we're dealing with Unicode conversions that may fall outside of the valid set of Unicode values. Unicode categories include other useful things. We can find out whether the categories are currency symbols, enclosing marks, letter number separators, punctation, and a category such as uppercase letters.
 
-Creating random numbers
+### Creating random numbers
 
 When we create a new random instance without specifying a seed value, it uses the current system time as the seed value. Because the system clock is limited in its level granularity, if we create two random instances close together, they may be initialized with the same seed value and hence will produce the same sequence of numbers. in the example below I've created two random instances, r1 and r2, and then I simply generated 5 numbers from that random instance. I've then done the same thing again, but for the r2 instance.
 
@@ -82,7 +82,7 @@ The r1 sequence is identical to the r2 instance, the same for the rest of the nu
 Below we're still creating effectively a sequence of 10 random numbers, but this time we're just using a single instance of the random class.
 
         [TestMethod]
-        public void Better()
+        public void MoreRandomNumber()
         {
             var r1 = new Random();            
 
@@ -101,7 +101,7 @@ Below we're still creating effectively a sequence of 10 random numbers, but this
 
 This will produce a better random sequence. The first five numbers here are different from the second five numbers here and this is because we're just using one instance of the random class. If you needed to generate random numbers between method calls then you could have a static random instance that's used by multiple methods. 
 
-Using Tuples to reduce code
+### Using Tuples to reduce code
 
 
 Tuples are generic classes that we can use to hold sets of values of potentially different types. There's a couple of different ways we can create tuples. The first is to simply use the constructor. Below I'm creating a single element tuple using the new keyword specifying the type of int and giving it a value for the int. 
@@ -133,8 +133,6 @@ Once we've created a tuple, we can access its properties using the .item1 or .it
             string greeting = t.Item2;
 
 Once we create a tuple, we can't then change the values of the elements as tuples are immutable.
-
-// t.Item1 = 99;    compiler error, Tuples are immutable
 
 We can compare tuples. Below are 2 tuples with the same values, 42 and hello.
  var t1 = Tuple.Create(42, "hello");

@@ -5,34 +5,38 @@ layout: post
 Title: SOLID Principles
 ---
 
-The Single Responsibility Principle
+Having been a database developer I was accustomed to programming in a procedural languages. When I took up programming in C# I was never sure how good Object Orientated code should look. I could get the job done but was my code easy to maintain, flexible for change and so on? I was pointed to the SOLID principles. I found these principles particular useful as my team are TDD evangelists. I am going to share my learning in this blog.
 
-Definition
+### The Single Responsibility Principle
+
+This represents the "S" in Solid. 
+
+#### Definition
 
 The Single Responsibility Principle states that every object should have a single responsibility, and that responsibility should be entirely encapsulated by the class. My Interpretation of this is there should never be more than one reason for a class to change. Just because you can doesn't mean you should. This relates to the concepts of Cohesion and Coupling. We want to strive for cohesion, but also for loose coupling. So cohesion is basically how strongly related and focused the various responsibilities in a module or class are. And coupling is defined as the degree to which each program module or class relies on each of the other modules. We should strive for low coupling, but high cohesion.
 
-Responsibilities
+#### Responsibilities
 
 Requirements changes typically map to responsibilities. The more responsibilities a class has, the more likelihood of change. Having multiple responsibilities within a class couples together these responsibilities making it likely that changes in one responsibility will effect or break features that are the other responsibilities of a class. The more classes a change effects, the more likely the change will introduce errors into our system. Thus it's important to try and craft our classes in such a way that the areas that are most likely to change are encapsulated into separate classes with single responsibilities.
 
-The Open / Closed Principle
+### The Open / Closed Principle
 
 The Open/Closed Principle, which represents the "O" in the solid. 
 This states that software entities such as classes, modules, functions, etc should be open for extension, but closed for modification. When you extend your software you should not need to go and dig around in its internals just to change its behavior. You should be able to extend it by adding new functionality with new classes, new functions. Without the need to change your existing classes and functions, while still achieving new behavior. That means you shouldn't need to change the source code or the binary code, you shouldn't have to recompile the existing pieces of your application a necessarily to achieve this.
 How do we change behavior without changing code? The key is to rely on abstractions. Once we start to rely on abstractions in our code, there is no limit to the number of different ways we can implement that abstraction, and thus no limit to the number of ways we can change the behavior of the code that's using these abstractions. So what do we mean by abstractions? Abstractions include Interfaces, as well as Abstract Base Classes. 
 
-The Liskov Substitution Principle
+### The Liskov Substitution Principle
 
 The "L" in the solid principles of object oriented development. 
 This Principle simply states that subtypes must be substitutable for their base types. In general calling code should not know that there is any difference at all between a derived type and its base type.  It's very common to say that a particular class IS-A whatever base class it is, for example one might have an employee class that IS-A contact, that IS-A person, or you might have a square that IS-A shape, or a car that IS-A vehicle. The Liskov Substitution Principle suggests that rather than simply considering whether or not some noun is another noun, you should instead consider whether or not it is substitutable for, that other noun in all situations where one might expect it to be. Invariants are things that have to do with the integrity of your model that your classes represent. So they consist of reasonable assumptions of behavior by clients and by other classes that make use of your class. Frequently unit tests can be used to identify what the expected behavior is, for a given method or class. And these unit tests should fail if that behavior is broken or changed, by a subtype that violates it. 
 Conforming to the Liskov Substitution Principle allows you to properly use polymorphism in your application and will produce more maintainable code. You should remember that is-substitutable-for is the preferred relationship that you should be looking at when you consider inheritance. Rather than simply that IS-A relationship that's so commonly used. 
 
-The Interface Segregation Principle
+### The Interface Segregation Principle
 
 This represents the letter "I" in the solid acronym of Principles of object oriented design. And applying it can help you create projects and applications that have fewer hidden dependencies, and are more cohesive and easier to maintain. The Interface Segregation Principle basically states, that clients should not be forced to depend on methods that they do not use. You should prefer small cohesive interfaces, to fat interfaces. 
 It's important for us to further define what we mean by an Interface. An Interface represents a non implementable type that specifies a public set of methods and properties, that must be implemented by anything that chooses to implement that interface. However it's also the public interface of a class, so any class, any type, whatever it's public interface is, whatever its public methods and properties are, if these are things that are used by some client, and it only requires the use of some small subset of those things, it's possible that you would end up with a better design if you were to segregate that class in some way that makes the client not need to use as much of it.
 
-Design Smells and Tips
+#### Design Smells and Tips
 
 So some of the smells that you should be looking for in your code that indicate you might be violating the Interface Segregation Principle include, unimplemented interface methods, whether it's in abstract class or any type of base class, or an actual interface, if you find in your code things where your overriding methods from your base class or your base interface, and then simply throwing a new non implemented exception or doing some other kind of degenerate implementation. You should realize that this is probably violating ISP because clearly the class that's using this implementation is not using this particular method, and therefore its using a smaller subset of the actual interface that's its being forced to depend upon. These violate the Liskov Substitution Principle because now these derived classes will not be substitutable for their base classes when the clients expect for all of these interfaces, the entire interface to be implemented and all the methods to do something useful.
 Another smell is when you have a client that references a class, but it only uses a small portion of it. This is very similar to the last smell, but not quite exactly the same. This is more from the client side rather than from the implementation side, when you see this sometimes you can make a facade or some other kind of class, that your class depends on and that makes it so that your not depending upon the larger class which is perhaps more likely to change and break your class. When should we fix violations of the Interface Segregation Principle? Like most of these principles you really only want to address them if there's pain, if there's no pain then there's not really a problem that needs to be attended to and you should continue adding new features, and fixing bugs and generally adding value to your application. However if you find yourself depending on a fat interface that you own and this is causing problems because of the dependencies involved, the best thing to do is create a smaller interface that has just what the client needs, have the fat interface implement this new interface. And then reference the new interface within your client code, ignoring the fat interface now. If you find fat interfaces are problematic, but you don't own them, something that you can do is create a smaller interface with just what you need, and then implement this interface.
@@ -40,45 +44,44 @@ So some basic tips for the Interface Segregation Principle, keep your interfaces
 
 In summary The Interface Segregation Principle states that you should not force client code to depend on things that it doesn't need. You want to make sure you keep your interfaces lean and focused. Refactor large interfaces so they inherit from smaller interfaces that your client uses. 
 
-The Dependency Inversion Principle
-Introduction
+### The Dependency Inversion Principle
 
 The D in the solid principles of object-oriented design. The Dependency Inversion Principle is one of the most important principles of building object-oriented software
 
-Definition
+#### Definition
 
 So the Dependency Inversion Principle states that high-level modules should not depend on low-level modules. Both should depend on abstractions. Furthermore, abstractions should not depend on details, but rather details should depend on abstractions. 
 
-What are Dependencies
+#### What are Dependencies
 
 If you're writing .net software you have taken a dependency on the .net platform, the .net framework, and more or less on Windows. It's a dependency that you're probably pretty comfortable with and that you don't expect to change too much with the course of your software. However, the dependencies we're talking about with regard to our application design are more low level and things that we are going to expect to possibly change as part of our application during its lifetime. For example, access to Third Party Libraries. These can often be things that will change frequently and, therefore, if possible we want to be able to inject alternate implementations of these Third Party Libraries into our code, unless we're certain that our choice of Third Party Libraries is not like to change for the lifetime of our application. Certainly, our database represents a dependency assuming that our application has one and it's definitely one of the things that you will want to wrap in such a way that it is not an implicit dependency within your code, but rather something that could be injected and replaced. We'll see more about how to do that soon. Other dependencies are less obvious. For example, if your code references the file system, if it uses email, if it sends email or even checks email from a POP mailbox for example, if it uses Web Services or really any kind of network access at all, would be a dependency as well. Now represent further dependencies that might require you to invert in the case of situations where they affect the behavior of your application and there's no way for you to test it unless you run it at certain times of day. Configuration can be a dependency in terms of the files that you use for configuring your application. The new Keyword is itself a possible indication that you've got a dependency within your application. You want to limit the places in which you allow your application to instantiate new objects, unless they're primitives like strings, for example. And related to that is the use of static methods. Anytime you're calling a static method, you're adding a dependency to your code that cannot easily be separated from the calling code in the case of trying to write a test for it or in the case of wanting to change the way your code works throughout the entire application in one place. If you have static methods sprinkled throughout your code, it's very difficult to change them all through one configuration change or one startup file change. Thread.Sleep can also be a dependency, as well as the use of Random, and it can be very difficult to test code that is supposed to give you random results, so if you specify an interface that you use for generating your random values, then in your test you can override that interface and say, well if the random value is this, then I should expect this result and similarly it allows you to more easily test so-called random data. These are some of the dependencies that you should be aware of. It's certainly not an exhaustive list.
 
-Traditional Programming
+#### Traditional Programming
 
 Most traditional programming works in such a way that dependencies naturally accrue within the code because the higher-level modules tend to call the lower-level modules and by calling them they also tend to instantiate them as they need them, so it's very typical for you to have, for instance, a user interface application that references some business logic and it might new-up one of those business logic classes, perhaps a customer class or an order class, and do some work with it. And in the course of calling the methods on that class maybe it has to talk to the database or maybe it has to talk to some other sort of infrastructure. Typically that business logic class would then new-up a Data Access component or a logger component or some other kind of class to do its work, and so ultimately, the user interface is depending on the business logic, the business logic is depending on the infrastructure and utility in the Data Access classes. Furthermore, it's often the case that a facade layer is implemented using static methods in order to facilitate a simpler API for those business level methods. Then finally, it's typical that class instantiation and call stack logic is scattered throughout the application. This violates the Single Responsibility Principle because now every class that is deciding who it's collaborators are through the use of static methods or the new keyword to instantiate specific instances with which it wants to work, is now responsible not just for its actual work, but also for determining who it's working with, and these are actually separate responsibilities that the Single Responsibility Principle should dictate that you would want to put into separate classes.
 
-Class Dependencies
+#### Class Dependencies
 
 When we're talking about class dependencies, our class constructor should require any dependencies that the class actually needs. Classes whose constructors make this very clear have what I would call explicit dependencies, however, classes that do not make this clear have implicit or hidden dependencies. They're lying to you. When they say that you can just new them up without passing them anything, but then they don't work if the database isn't there, that's telling you something that is false. It's telling you that this class would work, but then it's not letting you know about the fact you actually need a database in order to do anything.
 
-Design Smells
+#### Design Smells
 
 Now let's take a look at some design smells related to the Dependency Inversion Principle. The first one is the simplest, it's simply the use of the new keyword. If you find in your code that you're using the new keyword and newing up actual instantiations of particular instances of classes, rather than interfaces, it's often a sign that you could apply the Dependency Inversion Principle.
 Similar to the use of the new keyword is the use of static methods or properties. This can be something as simple as a DateTime.Now that's crept into your code instead of having an actual DateTime passed in or an abstraction such as an iCalendar or an iDateTime interface that supports the Now method that you want to be able to pass in. 
 The one place where you should use or could use static methods is when they don't actually touch anything other than the parameters that are passed into them. For example, if you had a static method that added two numbers together and it took in those numbers as parameters, there would be no problem with that because it's not going to cause any sort of a dependency problem, but if you have a static method that instantiates other classes and those classes might have dependencies of their own, now that's something that is going to likely cause you problems when it comes time to test.
 
-Where to Instantiate
+#### Where to Instantiate
 
 If we're not instantiating our objects, where do we insatiate them, you know, somewhere we have to do this. So typically what happens when you apply Dependency Injection is you get many small interfaces, which is good, because each one of them is very cohesive, they're loosely coupled to one another, they have the Single Responsibility Principle, they follow the Interface Segregation Principle, but at some point you have to actually create these objects. There's a couple of different choices for this.
 The first one is you can create a default constructor that then inherits from your constructor that actually takes in the interfaces and provides a default implementation of each of those interfaces. This is sometimes poor man's dependency injection or poor man's IoC. IoC means Inversion of Control. The other option is to manually instantiate everything in your application startup routine or main() method. In a web app this could be an application start in the global.asax and another option is to use an IoC container, which does the same thing typically in the main or startup method, but it has a bunch of features that it supports so that you can wire these things up in an intelligent fashion and go to one place and see how your object graph is going to be set up for your application.
 
-IoC Containers
+#### IoC Containers
 
 So, IoC containers or Inversion of Control Containers are responsible for object graph instantiation. They're initiated when the application begins and typically they either use code or configuration, such as an XML file to determine what is going to be set up to be used whenever an interface is called for. Managed interfaces and implementations to be used are registered with the container, so for instance, you might have in your container something that says you want to register IPrintService and say that anywhere I see an object that requires IPrintService, I want to use a new instance of PrintService. Dependencies on these interfaces are then resolved either at application startup or at runtime. You can call an IoC Resolve method that will go and find whatever the instance is that's mapped to that interface at runtime or you can have a container that automatically is able to create the dependency graph for a given class by using its constructor. Typically the constructor that has the most parameters is the one that we'll use.
 Sometimes it's necessary to create a factory class that is able to create your class for you and then register the factory class and its dependencies with your IoC Container. 
 
 
-Interested? Here are more great resources
+#### Interested in more? Here are more great resources
 
 Agile Principles, Patterns, and Practices book by Robert C. Martin and Micah Martin [http://amzn.to/agilepppcsharp] 
 
