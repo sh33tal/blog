@@ -5,7 +5,7 @@ layout: post
 Title: SOLID Principles
 ---
 
-Having been a database developer I was accustomed to programming in a procedural languages. When I took up programming in C# I was never sure how good Object Orientated code should look. I could get the job done but was my code easy to maintain, flexible for change and so on? I was pointed to the SOLID principles. I found these principles particular useful as my team are TDD evangelists. I am going to share my learning in this blog.
+I want to document things that I have learnt as during my journey from database developer to web developer. One of the most useful and  intersting principle that I have learnt is SOLID. The ultimate aim of SOLID is to produce maintable, flexible and testable code. SOLID encourages a more Object Orientated style preventing code from becoming a mess and hard to debug and extend. I found these principles particular useful as my team are TDD evangelists. I am going to share my learning in this blog.
 
 ### The Single Responsibility Principle
 
